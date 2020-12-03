@@ -119,7 +119,7 @@ def save_file(fields_list,data_list,csv_writer,fofa_sql):
             tmp_data[city_index] = ip_info[3]
         tmp_data.append(fofa_sql)
         if len(tmp_data) > 0:
-            csv_writer.writerow(tmp_data.decode('utf-8').encode('GBK'))
+            csv_writer.writerow(tmp_data)
 
 '''
 FOFA 数据内容保存
@@ -167,7 +167,7 @@ def dump_main(fofa_sql_list,fields,page_size,full=False):
     csv_file_name = '%s.csv'%(time.strftime('%Y%m%d%H%M%S',time.localtime(time.time())),)
     logger.info('file save name --> %s'%(csv_file_name))
     logger.info('dump data fields --> [%s] ,page size --> %s'%(fields,page_size))
-    csv_file = open(csv_file_name,'w',newline='')
+    csv_file = open(csv_file_name,'w',newline='',encoding='utf-8-sig')
     csv_writer = csv.writer(csv_file)
     csv_writer.writerow(fields_list)
     for fofa_sql in fofa_sql_list:
