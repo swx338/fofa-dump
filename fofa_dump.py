@@ -119,7 +119,7 @@ def save_file(fields_list,data_list,csv_writer,fofa_sql):
             tmp_data[city_index] = ip_info[3]
         tmp_data.append(fofa_sql)
         if len(tmp_data) > 0:
-            csv_writer.writerow(tmp_data)
+            csv_writer.writerow(tmp_data.decode('utf-8').encode('GBK'))
 
 '''
 FOFA 数据内容保存
